@@ -22,16 +22,20 @@ Users - `username, email, role`
 	- Can edit/remove own comments
 
 Topic - `date-time, headline, body, author, points`
+
 	- has many videos
 
 Video - `source, author, date time, points`
+
 	- Has many `comments`
 	- Has many `video links`
 
 Comment - `date-time, video-time, text, author, points`
+
 	- Belongs to a `video`
 	- Belongs to an `author`
 
 Video Link - `source, author, date time, text, points`
+
 	- Belongs to a `video`
 	- Belongs to an `author`
