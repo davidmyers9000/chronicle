@@ -1,41 +1,33 @@
 README
 ==========
 
-Users - `username, email, role, comments, videos, links`
+Users - `name, email, password, role`
 
-- Admin
-	- Can create/remove topics
-	- Can upload `videos` to a `topic`
-	- Can comment on `videos`
-	- Can create `links`
-	- Can remove any `Authors`
-	- Can remove any `videos`
-	- Can remove any `comments`
+- Admins
+	- Can manage all topics
+	- Can manage all authors
+	- Can manage all comments
+	- Can manage all videos
+	- Can manage all video_links
 
-- Author
-	- Can create topics
-	- Can upload `videos` to a `topic`
-	- Can comment on `videos`
-	- Can create `links`
-	- Can edit/remove own topic
-	- Can edit/remove own videos
-	- Can edit/remove own comments
+- Authors
+	- Can add topics
+	- Can add videos to a topic
+	- Can add comments to videos
+	- Can add video_links to videos
+	- Can manage own topic
+	- Can manage own videos
+	- Can manage own video_comments
+	- Can manage own video_links
 
-Topic - `date-time, headline, body, author, points`
+Topic - `headline, body, source`
+- Can have many video_comments
+- Can have many video_links
 
-- has many videos
+VideoComment - `text`
+- Belongs to a video
+- Belongs to an author
 
-Video - `source, author, date time, points`
-
-- Has many `comments`
-- Has many `links`
-
-Comment - `date-time, video-time, text, author, points`
-
-- Belongs to a `video`
-- Belongs to an `author`
-
-Link - `source, author, date time, text, points`
-
-- Belongs to a `video`
-- Belongs to an `author`
+VideoLink - `source, text`
+- Belongs to a video
+- Belongs to an author
