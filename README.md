@@ -15,6 +15,7 @@ Users - `name, email, password, role`
 	- Can add videos to a topic
 	- Can add comments to videos
 	- Can add video_links to videos
+	- Can add authors to own topic
 	- Can manage own topic
 	- Can manage own videos
 	- Can manage own video_comments
@@ -22,8 +23,7 @@ Users - `name, email, password, role`
 
 Topic - `subject, description`
 - Has a topic_video
-- Can have many video_comments
-- Can have many video_links
+- Can have many authors
 
 TopicVideo - `source, title, description`
 - Belongs to a topic
