@@ -20,14 +20,21 @@ Users - `name, email, password, role`
 	- Can manage own video_comments
 	- Can manage own video_links
 
-Topic - `headline, body, source`
+Topic - `subject, description`
+- Has a topic_video
 - Can have many video_comments
 - Can have many video_links
 
-VideoComment - `text`
-- Belongs to a video
+TopicVideo - `source, title, description`
+- Belongs to a topic
+- Has time
+- Can have many video_comments
+- Can have many video_links
+
+VideoComment - `text, time`
+- Belongs to a topic_video
 - Belongs to an author
 
-VideoLink - `source, text`
-- Belongs to a video
+VideoLink - `source, note, time`
+- Belongs to a topic_video
 - Belongs to an author
