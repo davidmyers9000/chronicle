@@ -6,8 +6,8 @@ Users - `name, email, password, role`
 - Admins
 	- Can manage all topics
 	- Can manage all authors
-	- Can manage all comments
 	- Can manage all videos
+	- Can manage all video_comments
 	- Can manage all video_links
 
 - Authors
@@ -22,7 +22,7 @@ Users - `name, email, password, role`
 	- Can manage own video_links
 
 Topic - `subject, description`
-- Has a topic_video
+- Must have a topic_video
 - Can have many authors
 
 TopicVideo - `source, title, description`
