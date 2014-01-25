@@ -6,10 +6,17 @@
         - @topic.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_field :description
-  .actions = f.submit 'Save'
+  .row
+    .small-3.columns
+      = f.label :title, class: "right inline"
+    .small-9.columns
+      = f.text_field :title
+  .row
+    .small-3.columns
+      = f.label :description, class: "right inline"
+    .small-9.columns
+      = f.text_field :description
+  
+  .row
+    .small-9.small-offset-3.columns
+      = f.submit 'Save', class: "button radius"
