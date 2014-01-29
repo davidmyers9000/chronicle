@@ -21,8 +21,12 @@ Users - `name, email, password, role`
 	- Can manage own video_comments
 	- Can manage own video_links
 
+<<<<<<< HEAD
 Topic - `subject, description`
 
+=======
+Topic - `title, description`
+>>>>>>> 36da8e32bfd1adb6bcc624b8780b7688fbb08ea0
 - Must have a topic_video
 - Can have many authors
 
