@@ -1,22 +1,28 @@
-h1 Listing topics
+- if !current_user.nil?
+  h1 Listing topics
 
-table
-  thead
-    tr
-      th Title
-      th Description
-      th
-      th
-      th
-  tbody
-    - @topics.each do |topic|
+  table
+    thead
       tr
-        td = topic.title
-        td = topic.description
-        td = link_to 'Show', topic
-        td = link_to 'Edit', edit_topic_path(topic)
-        td = link_to 'Destroy', topic, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Title
+        th Description
+        th
+        th
+        th
+    tbody
+      - @topics.each do |topic|
+        tr
+          td = topic.title
+          td = topic.description
+          td = link_to 'Show', topic
+          td = link_to 'Edit', edit_topic_path(topic)
+          td = link_to 'Destroy', topic, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
+  br
 
-= link_to 'New Topic', new_topic_path, class: "button radius"
+  = link_to 'New Topic', new_topic_path, class: "button radius"
+
+- else
+  #notice
+    h1 Notice
+    | You are not logged in. #{link_to "Sign in", signin_path} or #{link_to "Sign up", signup_path} to continue.

@@ -11,42 +11,12 @@ html
     = csrf_meta_tags
 
   body
-    .contain-to-grid
-      nav.top-bar(data-topbar)
-        ul.title-area
-          li.name
-            h1
-              a href="#" Chronicle
-          
-          li.toggle-topbar.menu-icon
-            a href="#" Menu
-
-        section.top-bar-section
-          /!-- Right Nav Section --
-          ul.right
-            li.active
-              a href="#" Right Button Active
-            li.has-dropdown
-              a href="#" Right Button with Dropdown
-              ul class="dropdown"
-                li 
-                  a href="#" First link in dropdown    
-
-          /!-- Left Nav Section --
-          ul.left
-            li
-              a href="#" Left Nav Button
+    == render :partial => 'shared/nav'
     .row
       .medium-8.columns
         == yield
       .medium-4.columns
-        h2 Sidebar
-        p 
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          | cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          | proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        == render :partial => 'shared/sidebar'
+
 
     = javascript_include_tag "application"
