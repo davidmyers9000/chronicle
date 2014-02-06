@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140206161504) do
   end
 
   create_table "videos", force: true do |t|
+    t.integer  "topic_id"
     t.string   "source"
     t.string   "title"
     t.string   "description"
