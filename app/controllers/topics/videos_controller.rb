@@ -1,10 +1,11 @@
 class VideosController < ApplicationController
+  before_action :set_topic
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    @videos = @topic.videos
   end
 
   # GET /videos/1
@@ -14,7 +15,7 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
-    @video = Video.new
+    @video = @topic.videos.new
   end
 
   # GET /videos/1/edit
@@ -24,11 +25,11 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-    @video = Video.new(video_params)
+    @video = @topic.videos.new(video_params)
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.html { redirect_to [@topic, @video], notice: 'Video was successfully created.' }
         format.json { render action: 'show', status: :created, location: @video }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
+        format.html { redirect_to [@topic, @video], notice: 'Video was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,15 +57,19 @@ class VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to videos_url }
+      format.html { redirect_to topic_video_url(@topic) }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_topic
+      @topic = Topic.find(params[:topic_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = Video.find(params[:id])
+      @video = @topic.videos.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

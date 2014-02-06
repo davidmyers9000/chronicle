@@ -7,20 +7,26 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = User.create!( :email                 => 'admin@gmail.com', 
-					  :role                  => 'admin',
-					  :password              => 'qwerty',
-					  :password_confirmation => 'qwerty')
+										  :role                  => 'admin',
+										  :password              => 'qwerty',
+										  :password_confirmation => 'qwerty')
 
 User.create!( :email                 => 'dude@gmail.com', 
-					  :role                  => 'author',
-					  :password              => 'qwerty',
-					  :password_confirmation => 'qwerty')
+						  :role                  => 'author',
+						  :password              => 'qwerty',
+						  :password_confirmation => 'qwerty')
 
 # -----------------------------------------------------------
 
 topics = Topic.create!( :title => 'Fitness',
-						:description => 'Excercise, dieting, sports')
+												:description => 'Excercise, dieting, sports')
 Topic.create!( :title => 'Music',
-						:description => 'The music you liek to listen to')
+							 :description => 'The music you liek to listen to')
 Topic.create!( :title => 'Rails',
-						:description => 'Instructional videos')
+							 :description => 'Instructional videos')
+
+# -----------------------------------------------------------
+
+videos = Video.create!( :title => 'Workaholics',
+												:description => 'A very funny and immature show',
+												:topic_id => 1 )

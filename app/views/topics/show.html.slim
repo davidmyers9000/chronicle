@@ -1,12 +1,27 @@
 p#notice = notice
 
-p
-  strong Title:
+= link_to 'Edit', edit_topic_path(@topic)
+' | 
+= link_to 'Back', topics_path
+
+h1
   = @topic.title
 p
-  strong Description:
   = @topic.description
 
-= link_to 'Edit', edit_topic_path(@topic)
-'|
-= link_to 'Back', topics_path
+table
+	tr
+		th Title
+		th Description
+		th
+		th
+		th
+
+	- @topic.videos.each do |video|
+		tr
+			td = video.title
+			td = video.description
+			td
+			td
+			td
+= link_to '+ Add a Video', new_topic_video_path(@topic)
