@@ -1,5 +1,7 @@
 Chronicle::Application.routes.draw do
 
+  resources :videos
+
   resources :sessions,     only: [:create]
   resources :users
   resources :topics

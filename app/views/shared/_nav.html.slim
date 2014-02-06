@@ -15,5 +15,7 @@
         - else
           li= link_to "Sign in", signin_path
           li= link_to "Sign up", signup_path
-      ul.left
-        li= link_to "Topics", topics_path
+      -if current_user
+        ul.left
+          li= link_to "Topics", topics_path
+          li= link_to "Videos", videos_path
