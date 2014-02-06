@@ -1,4 +1,16 @@
 Chronicle::Application.routes.draw do
+
+  resources :sessions,     only: [:create]
+  resources :users
+  resources :topics
+
+  # authentication
+  get    "signup"     => "users#new",        as: "signup"
+  get    "signin"     => "sessions#new",     as: "signin"
+  delete "signout"    => "sessions#destroy", as: "signout"
+  
+  root 'topics#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

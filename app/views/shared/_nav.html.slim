@@ -1,0 +1,19 @@
+/!--- Nav ---/
+.contain-to-grid
+  nav.top-bar(data-topbar data-options="is_hover: false")
+    ul.title-area
+      li.name
+        h1= link_to "Chronicle", root_path
+      li.toggle-topbar.menu-icon
+        a href="#" Menu
+    section.top-bar-section
+      ul.right
+        - if current_user
+          li
+            a Welcome, #{current_user.email}
+          li= link_to "Sign out", signout_path, method: "delete"
+        - else
+          li= link_to "Sign in", signin_path
+          li= link_to "Sign up", signup_path
+      ul.left
+        li= link_to "Topics", topics_path

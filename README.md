@@ -1,7 +1,7 @@
 README
 ==========
 
-Users - `name, email, password, role`
+Users - `email, password, role`
 
 - Admins
 	- Can manage all topics
@@ -21,7 +21,7 @@ Users - `name, email, password, role`
 	- Can manage own video_comments
 	- Can manage own video_links
 
-Topic - `subject, description`
+Topic - `title, description`
 
 - Must have a topic_video
 - Can have many authors

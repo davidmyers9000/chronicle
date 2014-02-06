@@ -1,0 +1,22 @@
+= form_for @topic do |f|
+  - if @topic.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@topic.errors.count, "error")} prohibited this topic from being saved:"
+      ul
+        - @topic.errors.full_messages.each do |message|
+          li = message
+
+  .row
+    .small-3.columns
+      = f.label :title, class: "right inline"
+    .small-9.columns
+      = f.text_field :title
+  .row
+    .small-3.columns
+      = f.label :description, class: "right inline"
+    .small-9.columns
+      = f.text_field :description
+  
+  .row
+    .small-9.small-offset-3.columns
+      = f.submit 'Save', class: "button radius"
