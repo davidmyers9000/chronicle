@@ -2,7 +2,9 @@ Chronicle::Application.routes.draw do
 
   resources :sessions,     only: [:create]
   resources :users
-  resources :topics
+  resources :topics do
+    resources :videos, controller: "topics/videos"
+  end
 
   # authentication
   get    "signup"     => "users#new",        as: "signup"

@@ -7,38 +7,36 @@ Users - `email, password, role`
 	- Can manage all topics
 	- Can manage all authors
 	- Can manage all videos
-	- Can manage all video_comments
-	- Can manage all video_links
+	- Can manage all comments
 
 - Authors
 	- Can add topics
 	- Can add videos to a topic
 	- Can add comments to videos
-	- Can add video_links to videos
+	- Can add  to videos
 	- Can add authors to own topic
 	- Can manage own topic
 	- Can manage own videos
-	- Can manage own video_comments
-	- Can manage own video_links
+	- Can manage own comments
 
 Topic - `title, description`
 
-- Must have a topic_video
+- has many videos
 - Can have many authors
 
-TopicVideo - `source, title, description`
+Video - `source, title, description`
 
 - Belongs to a topic
 - Has time
-- Can have many video_comments
-- Can have many video_links
+- Can have many comments
+- Can have many 
 
-VideoComment - `text, time`
+Comment - `text, time`
 
-- Belongs to a topic_video
+- Belongs to a videos
 - Belongs to an author
 
 VideoLink - `source, note, time`
 
-- Belongs to a topic_video
+- Belongs to a videos
 - Belongs to an author

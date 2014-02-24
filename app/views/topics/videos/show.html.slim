@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Source:
+  = @video.source
+p
+  strong Title:
+  = @video.title
+p
+  strong Description:
+  = @video.description
+
+= link_to 'Edit', edit_topic_video_path(@topic, @video)
+'|
+= link_to 'Back', topic_path

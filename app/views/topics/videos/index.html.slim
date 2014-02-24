@@ -1,0 +1,24 @@
+h1 
+  = "All #{@topic.title} videos"
+
+table
+  tr
+    th Source
+    th Title
+    th Description
+    th
+    th
+    th
+
+  - @videos.each do |video|
+    tr
+      td = video.source
+      td = video.title
+      td = video.description
+      td = link_to 'Show', video
+      td = link_to 'Edit', edit_topic_video_path(@topic, video)
+      td = link_to 'Destroy', video, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Video', new_topic_video_path

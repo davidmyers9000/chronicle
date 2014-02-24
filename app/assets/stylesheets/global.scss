@@ -1,3 +1,14 @@
+@import "foundation/components/alert-boxes";
+
 table {
 	width: 100%;
+}
+
+#notice {
+  // @extend .alert-box;
+}
+
+#error_explanation {
+  @extend .alert-box;
+  @extend .info;
 }
