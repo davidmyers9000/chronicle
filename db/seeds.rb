@@ -27,6 +27,8 @@ Topic.create!( :title => 'Rails',
 
 # -----------------------------------------------------------
 
-videos = Video.create!( :title => 'Workaholics',
-												:description => 'A very funny and immature show',
-												:topic_id => 1 )
+videos = Video.create!( :topic_id    => 1,
+                        :source      => 'http://www.youtube.com/watch?v=GJFjYyA40ss',
+                        :title       => 'Mark Rippetoe: OHP Perfect Form',
+                        :description => 'Mark Ripitoe teaches proper OHP form to several athletes'
+  )

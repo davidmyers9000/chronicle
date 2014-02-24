@@ -1,27 +1,18 @@
 p#notice = notice
 
-= link_to 'Edit', edit_topic_path(@topic)
-' | 
-= link_to 'Back', topics_path
+.panel
+	= link_to 'Edit', edit_topic_path(@topic), class: "button tiny right"
+	h1
+	  = @topic.title
+	p = @topic.description
 
-h1
-  = @topic.title
-p
-  = @topic.description
-
-table
-	tr
-		th Title
-		th Description
-		th
-		th
-		th
-
-	- @topic.videos.each do |video|
-		tr
-			td = video.title
-			td = video.description
-			td
-			td
-			td
-= link_to '+ Add a Video', new_topic_video_path(@topic)
+- @topic.videos.each do |video|
+	.row
+		.medium-12.columns
+			h2 = link_to video.title, video.source
+	.row
+		.medium-9.columns = video.description
+		.medium-3.columns
+			= link_to "Edit", edit_topic_video_path(@topic, video)
+			'  | 
+			= link_to "Remove", topic_video_path(@topic, video), data: {:confirm => 'Are you sure?'}, :method => :delete

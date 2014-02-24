@@ -1,4 +1,5 @@
-h1 Listing videos
+h1 
+  = "All #{@topic.title} videos"
 
 table
   tr
@@ -15,9 +16,9 @@ table
       td = video.title
       td = video.description
       td = link_to 'Show', video
-      td = link_to 'Edit', edit_video_path(video)
+      td = link_to 'Edit', edit_topic_video_path(@topic, video)
       td = link_to 'Destroy', video, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
-= link_to 'New Video', new_video_path
+= link_to 'New Video', new_topic_video_path

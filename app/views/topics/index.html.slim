@@ -1,9 +1,6 @@
 - if !current_user.nil?
   .row
-    h1.left Listing topics
     = link_to '+ New Topic', new_topic_path, class: "button radius right"
-
-  .row
     - @topics.each do |topic|
       h2 = link_to "#{topic.title}", topic
       p = topic.description
