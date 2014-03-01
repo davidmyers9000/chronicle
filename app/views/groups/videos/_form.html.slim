@@ -1,4 +1,4 @@
-= form_for [@topic, @video] do |f|
+= form_for [@group, @video] do |f|
   - if @video.errors.any?
     #error_explanation
       = "#{pluralize(@video.errors.count, "error")} prohibited this video from being saved:"

@@ -1,5 +1,5 @@
 h1 
-  = "All #{@topic.title} videos"
+  = "All #{@group.title} videos"
 
 table
   tr
@@ -16,9 +16,9 @@ table
       td = video.title
       td = video.description
       td = link_to 'Show', video
-      td = link_to 'Edit', edit_topic_video_path(@topic, video)
+      td = link_to 'Edit', edit_group_video_path(@group, video)
       td = link_to 'Destroy', video, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
-= link_to 'New Video', new_topic_video_path
+= link_to 'New Video', new_group_video_path

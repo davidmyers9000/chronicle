@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  belongs_to :topic
+  belongs_to :group
 
   validates :source,      presence: true
   validates :title,       presence: true

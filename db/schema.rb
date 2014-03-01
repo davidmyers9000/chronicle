@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140206161504) do
 
-  create_table "topics", force: true do |t|
+  create_table "groups", force: true do |t|
     t.string   "title"
     t.string   "description"
     t.datetime "created_at"
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 20140206161504) do
     t.string   "source"
     t.string   "title"
     t.string   "description"
-    t.integer  "topic_id"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "videos", ["topic_id"], name: "index_videos_on_topic_id"
+  add_index "videos", ["group_id"], name: "index_videos_on_group_id"
 
 end

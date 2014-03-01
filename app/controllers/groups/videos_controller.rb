@@ -1,11 +1,11 @@
-class Topics::VideosController < ApplicationController
-  before_action :set_topic
+class Groupss::VideosController < ApplicationController
+  before_action :set_group
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   # GET /videos
   # GET /videos.json
   def index
-    @videos = @topic.videos
+    @videos = @group.videos
   end
 
   # GET /videos/1
@@ -15,7 +15,7 @@ class Topics::VideosController < ApplicationController
 
   # GET /videos/new
   def new
-    @video = @topic.videos.new
+    @video = @group.videos.new
   end
 
   # GET /videos/1/edit
@@ -25,11 +25,11 @@ class Topics::VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-    @video = @topic.videos.new(video_params)
+    @video = @group.videos.new(video_params)
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @topic, notice: 'Video was successfully created.' }
+        format.html { redirect_to @group, notice: 'Video was successfully created.' }
         format.json { render action: 'show', status: :created, location: @video }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class Topics::VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to @topic, notice: 'Video was successfully updated.' }
+        format.html { redirect_to @group, notice: 'Video was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,19 +57,19 @@ class Topics::VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to topic_url(@topic) }
+      format.html { redirect_to group_url(@group) }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_topic
-      @topic = Topic.find(params[:topic_id])
+    def set_group
+      @group = group.find(params[:group_id])
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = @topic.videos.find(params[:id])
+      @video = @group.videos.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

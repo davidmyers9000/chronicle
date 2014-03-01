@@ -18,16 +18,16 @@ User.create!( :email                 => 'dude@gmail.com',
 
 # -----------------------------------------------------------
 
-topics = Topic.create!( :title => 'Fitness',
+groups = Group.create!( :title => 'Fitness',
 												:description => 'Excercise, dieting, sports')
-Topic.create!( :title => 'Music',
+Group.create!( :title => 'Music',
 							 :description => 'The music you liek to listen to')
-Topic.create!( :title => 'Rails',
+Group.create!( :title => 'Rails',
 							 :description => 'Instructional videos')
 
 # -----------------------------------------------------------
 
-videos = Video.create!( :topic_id    => 1,
+videos = Video.create!( :group_id    => 1,
                         :source      => 'http://www.youtube.com/watch?v=GJFjYyA40ss',
                         :title       => 'Mark Rippetoe: OHP Perfect Form',
                         :description => 'Mark Ripitoe teaches proper OHP form to several athletes'

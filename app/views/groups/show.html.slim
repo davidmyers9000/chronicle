@@ -1,0 +1,18 @@
+p#notice = notice
+
+.panel
+	= link_to 'Edit', edit_group_path(@group), class: "button tiny right"
+	h1
+	  = @group.title
+	p = @group.description
+
+- @group.videos.each do |video|
+	.row
+		.medium-12.columns
+			h2 = link_to video.title, video.source
+	.row
+		.medium-9.columns = video.description
+		.medium-3.columns
+			= link_to "Edit", edit_group_video_path(@group, video)
+			'  | 
+			= link_to "Remove", group_video_path(@group, video), data: {:confirm => 'Are you sure?'}, :method => :delete

@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class TopicsControllerTest < ActionController::TestCase
+class GroupsControllerTest < ActionController::TestCase
   setup do
-    @topic = topics(:one)
+    @group = groups(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:topics)
+    assert_not_nil assigns(:groups)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create topic" do
-    assert_difference('Topic.count') do
-      post :create, topic: { description: @topic.description, title: @topic.title }
+  test "should create group" do
+    assert_difference('Group.count') do
+      post :create, group: { description: @group.description, title: @group.title }
     end
 
-    assert_redirected_to topic_path(assigns(:topic))
+    assert_redirected_to group_path(assigns(:group))
   end
 
-  test "should show topic" do
-    get :show, id: @topic
+  test "should show group" do
+    get :show, id: @group
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @topic
+    get :edit, id: @group
     assert_response :success
   end
 
-  test "should update topic" do
-    patch :update, id: @topic, topic: { description: @topic.description, title: @topic.title }
-    assert_redirected_to topic_path(assigns(:topic))
+  test "should update group" do
+    patch :update, id: @group, group: { description: @group.description, title: @group.title }
+    assert_redirected_to group_path(assigns(:group))
   end
 
-  test "should destroy topic" do
-    assert_difference('Topic.count', -1) do
-      delete :destroy, id: @topic
+  test "should destroy group" do
+    assert_difference('Group.count', -1) do
+      delete :destroy, id: @group
     end
 
-    assert_redirected_to topics_path
+    assert_redirected_to groups_path
   end
 end

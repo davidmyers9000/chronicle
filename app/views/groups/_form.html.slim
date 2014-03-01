@@ -1,9 +1,9 @@
-= form_for @topic do |f|
-  - if @topic.errors.any?
+= form_for @group do |f|
+  - if @group.errors.any?
     #error_explanation
-      = "#{pluralize(@topic.errors.count, "error")} prohibited this topic from being saved:"
+      = "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
       ul
-        - @topic.errors.full_messages.each do |message|
+        - @group.errors.full_messages.each do |message|
           li = message
 
   .row
