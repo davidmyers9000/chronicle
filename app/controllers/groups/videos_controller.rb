@@ -1,4 +1,4 @@
-class Groupss::VideosController < ApplicationController
+class Groups::VideosController < ApplicationController
   before_action :set_group
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
@@ -64,7 +64,7 @@ class Groupss::VideosController < ApplicationController
 
   private
     def set_group
-      @group = group.find(params[:group_id])
+      @group = Group.find(params[:group_id])
     end
 
     # Use callbacks to share common setup or constraints between actions.
