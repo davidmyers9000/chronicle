@@ -1,15 +1,12 @@
 p#notice = notice
 
-p
-  strong Source:
-  = @video.source
-p
-  strong Title:
-  = @video.title
-p
-  strong Description:
-  = @video.description
+= raw youtube_embed @video.source
 
-= link_to 'Edit', edit_group_video_path(@group, @video)
-'|
-= link_to 'Back', group_path
+.panel
+  h2 = @video.title
+  p
+    = @video.description
+
+  = link_to 'Edit', edit_group_video_path(@group, @video)
+  '|
+  = link_to 'Back', group_path

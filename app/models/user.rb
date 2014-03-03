@@ -1,25 +1,25 @@
 class User < ActiveRecord::Base
 	has_secure_password
 
-  validates :email, presence: true
+  after_initialize :_set_default_role
 
-  validates :password,  
-    presence: true, 
-    confirmation: true,
-    if: :_password_present?
+  ROLES = ["admin", "instructor"]
+
+  validates :email,     presence: true,
+                        uniqueness: true,
+                        format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+
+  validates :password,  presence: true, 
+                        confirmation: true, 
+                        if: :_password_present?
 
   private
 
     def _password_present?
       self.password.present?
     end
-    
-    # def self.authenticate(email, password)
-    #   user = find_by_email(email)
-    #   if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-    #     user
-    #   else
-    #     nil
-    #   end
-    # end
+
+    def _set_default_role
+      self.role ||= "author"
+    end
 end

@@ -4,18 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  before_filter :authorize_user!
 
-	def current_user
-	  if session[:user_id]
-	    @current_user ||= User.find(session[:user_id])
-	  end
-	end
+  private
+  	def current_user
+  	  if session[:user_id]
+  	    @current_user ||= User.find(session[:user_id])
+  	  end
+  	end
 
-	def authorize_user!
-	  unless current_user
-	    redirect_to signin_path, 
-	      notice: "You must sign in to view this page."
-	  end
-	end
+  	def authorize_user!
+  	  unless current_user
+  	    redirect_to signin_path, notice: "You must sign in to view this page."
+  	  end
+  	end
 end
 

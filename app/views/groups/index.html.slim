@@ -1,4 +1,4 @@
-- if !current_user.nil?
+- unless current_user.nil?
   .row
     = link_to '+ New group', new_group_path, class: "button radius right"
     - @groups.each do |group|

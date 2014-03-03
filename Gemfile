@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bcrypt-ruby', '~> 3.1.2'
 
+gem 'hirb'
+
 
 group :doc do
  
