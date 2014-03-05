@@ -1,4 +1,5 @@
 - unless current_user.nil?
+
   = link_to '+ New group', new_group_path, class: "button radius right"
   - @groups.each do |group|
     h2 = link_to "#{group.title}", group
@@ -11,7 +12,7 @@
         = link_to 'Destroy', group, data: {:confirm => 'Are you sure?'}, :method => :delete
 
   br
-
+  p = current_user.id
 
 - else
   #notice
