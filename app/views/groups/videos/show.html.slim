@@ -6,7 +6,7 @@ p#notice = notice
   h2 = @video.title
   p
     = @video.description
-
-  = link_to 'Edit', edit_group_video_path(@group, @video)
-  '|
-  = link_to 'Back', group_path
+  - if current_user.id == @video.user_id
+	  = link_to 'Edit', edit_group_video_path(@group, @video)
+	  '|
+	  = link_to 'Back', group_path

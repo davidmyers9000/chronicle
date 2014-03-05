@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorize_admin!, only: [:edit, :update, :destroy]
   # GET /groups
   # GET /groups.json
   def index
@@ -70,5 +70,11 @@ class GroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
       params.require(:group).permit(:title, :description)
+    end
+
+    def authorize_admin!
+      unless current_user.role == 'admin'
+        redirect_to @group, notice: "You do not have permission for this action."
+      end
     end
 end

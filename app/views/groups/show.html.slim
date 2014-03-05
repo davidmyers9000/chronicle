@@ -13,9 +13,10 @@ p#notice = notice
 	.row
 		.medium-9.columns = video.description
 		.medium-3.columns
-			= link_to "Edit", edit_group_video_path(@group, video)
-			'  | 
-			= link_to "Remove", group_video_path(@group, video), data: {:confirm => 'Are you sure?'}, :method => :delete
+			- if (current_user.id == video.user_id || current_user.role == 'admin')
+				= link_to "Edit", edit_group_video_path(@group, video)
+				'  | 
+				= link_to "Remove", group_video_path(@group, video), data: {:confirm => 'Are you sure?'}, :method => :delete
 
 .row 
 	medium-12.columns

@@ -2,6 +2,9 @@ class Groups::VideosController < ApplicationController
   before_action :set_group
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
+  before_action :authorize_author!, only: [:edit, :update, :destroy]
+  # before_action :set_user
+
   # GET /videos
   # GET /videos.json
   def index
@@ -26,6 +29,7 @@ class Groups::VideosController < ApplicationController
   # POST /videos.json
   def create
     @video = @group.videos.new(video_params)
+    @video.user_id = current_user.id
 
     respond_to do |format|
       if @video.save
@@ -75,5 +79,11 @@ class Groups::VideosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
       params.require(:video).permit(:source, :title, :description)
+    end
+
+    def authorize_author!
+      unless (current_user.id == @video.user_id || current_user.role == 'admin')
+        redirect_to @group, notice: "You do not have permission for this action."
+      end
     end
 end

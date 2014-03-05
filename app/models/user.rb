@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_secure_password
 
+  has_many :videos
+
   after_initialize :_set_default_role
 
   ROLES = ["admin", "instructor"]

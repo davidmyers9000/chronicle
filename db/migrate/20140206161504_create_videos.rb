@@ -5,6 +5,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string     :title
       t.string     :description
       t.references :group, index: true
+      t.references :user, index: true
 
       t.timestamps
     end
