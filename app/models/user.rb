@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
 	has_secure_password
 
+  has_many :subscriptions
+  has_many :groups, through: :subscriptions
+
   after_initialize :_set_default_role
 
   ROLES = ["admin", "instructor"]
 
   validates :email,     presence: true,
                         uniqueness: true,
-                        format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+                        format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
   validates :password,  presence: true, 
                         confirmation: true, 

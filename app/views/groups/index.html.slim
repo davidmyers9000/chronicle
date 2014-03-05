@@ -1,17 +1,18 @@
 - unless current_user.nil?
   .row
     = link_to '+ New group', new_group_path, class: "button radius right"
-    - @groups.each do |group|
-      h2 = link_to "#{group.title}", group
+    - @group.each do |group|
+      h2 
+        = link_to group.title, group
+        small = link_to "Subscribe", subcribe_path, :method => :post, class: "button tiny"
       p = group.description
-      p 
       p 
         = link_to 'Edit', edit_group_path(group)
         |  | 
         = link_to 'Destroy', group, data: {:confirm => 'Are you sure?'}, :method => :delete
 
   br
-
+  p = current_user.id
 
 - else
   #notice
