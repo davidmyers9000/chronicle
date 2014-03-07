@@ -27,7 +27,8 @@ table.table
 			tr
 				td = link_to video.title, group_video_path(video.group, video)
 				td = link_to video.group.title, group_path(video.group)
-				td = link_to "Edit", edit_group_video_path(video.group, video)
-				td = link_to "Destroy", group_video_path(video.group, video), data: {:confirm => 'Are you sure?'}, :method => :delete
+				- if ( current_user.id == video.user_id || current_user.role == "admin" )
+					td = link_to "Edit", edit_group_video_path(video.group, video)
+					td = link_to "Destroy", group_video_path(video.group, video), data: {:confirm => 'Are you sure?'}, :method => :delete
 
 

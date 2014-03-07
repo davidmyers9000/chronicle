@@ -1,7 +1,8 @@
 p#notice = notice
 
 .panel
-	= link_to 'Edit', edit_group_path(@group), class: "button tiny right"
+	- if current_user.role == "admin"
+		= link_to 'Edit', edit_group_path(@group), class: "button tiny right"
 	h1
 	  = @group.title
 	p = @group.description

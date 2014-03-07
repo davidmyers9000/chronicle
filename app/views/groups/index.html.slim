@@ -1,15 +1,14 @@
 - unless current_user.nil?
-  .row
-    = link_to '+ New group', new_group_path, class: "button radius right"
-    - @groups.each do |group|
-      h2 = link_to "#{group.title}", group
-      p = group.description
+  = link_to '+ New group', new_group_path, class: "button radius right"
+  - @groups.each do |group|
+    h2 = link_to "#{group.title}", group
+    p = group.description
+    p 
+    - if current_user.role == 'admin'
       p 
-      - if current_user.role == 'admin'
-        p 
-          = link_to 'Edit', edit_group_path(group)
-          |  | 
-          = link_to 'Destroy', group, data: {:confirm => 'Are you sure?'}, :method => :delete
+        = link_to 'Edit', edit_group_path(group)
+        |  | 
+        = link_to 'Destroy', group, data: {:confirm => 'Are you sure?'}, :method => :delete
 
   br
 
