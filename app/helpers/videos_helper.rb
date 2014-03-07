@@ -11,10 +11,8 @@ module VideosHelper
     %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
 
-  def is_author
-    if current_user.id == @video.user_id
-      true
-    end
+  def is_owner?
+    current_user.id == @video.user_id
   end
 end
 

@@ -2,11 +2,20 @@ p#notice = notice
 
 = raw youtube_embed @video.source
 
+h4
+	small
+		| Posted by 
+		span = link_to @video.user.email, @video.user
+		'  
+		span = @video.created_at.strftime("on %m/%d/%y at %I:%M:%p")
 .panel
   h2 = @video.title
   p
     = @video.description
-  - if (current_user.id == @video.user_id || current_user.role == 'admin')
+
+
+  - if is_owner? || is_admin?
 	  = link_to 'Edit', edit_group_video_path(@group, @video)
 	  '|
 	  = link_to 'Back', group_path
+p
