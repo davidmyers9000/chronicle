@@ -30,5 +30,13 @@ Group.create!( :title => 'Rails',
 videos = Video.create!( :group_id    => 1,
                         :source      => 'http://www.youtube.com/watch?v=GJFjYyA40ss',
                         :title       => 'Mark Rippetoe: OHP Perfect Form',
-                        :description => 'Mark Ripitoe teaches proper OHP form to several athletes'
+                        :description => 'Mark Ripitoe teaches proper OHP form to several athletes',
+                        :user_id		 => 1
+  )
+
+Video.create!(  :group_id    => 1,
+                :source      => 'http://www.youtube.com/watch?v=iMq1rTaErMc',
+                :title       => 'Mark Rippetoe: Intro to the Bench Press',
+                :description => 'Mark Ripitoe teaches proper OHP form to several athletes',
+                :user_id		 => 2
   )

@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(version: 20140206161504) do
     t.string   "title"
     t.string   "description"
     t.integer  "group_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "videos", ["group_id"], name: "index_videos_on_group_id"
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id"
 
 end

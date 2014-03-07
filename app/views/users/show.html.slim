@@ -1,15 +1,34 @@
 p#notice = notice
 
-p
-  strong Email:
+h1
   = @user.email
 p
-  strong Password:
-  = @user.password_digest
-p
   strong Role:
-  = @user.role
+  '  
+  span.label = @user.role
 
-= link_to 'Edit', edit_user_path(@user)
-'|
-= link_to 'Back', users_path
+- if is_admin?
+	= link_to 'Edit', edit_user_path(@user)
+	'|
+	= link_to 'Back', users_path
+hr
+
+/ h3 Groups
+/ ul
+/ - @user.groups.each do |group|
+
+h2 Videos
+table.table
+	th Title
+	th Group
+	th
+	tbody
+		- @user.videos.each do |video|
+			tr
+				td = link_to video.title, group_video_path(video.group, video)
+				td = link_to video.group.title, group_path(video.group)
+				- if ( current_user.id == video.user_id || current_user.role == "admin" )
+					td = link_to "Edit", edit_group_video_path(video.group, video)
+					td = link_to "Destroy", group_video_path(video.group, video), data: {:confirm => 'Are you sure?'}, :method => :delete
+
+

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :authorize_user!, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, except: [:index, :show]
 
   # GET /users
   # GET /users.json
@@ -71,5 +72,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :role)
+    end
+
+    def authorize_user!
+      unless is_admin?
+        redirect_to user_path(@user), notice: "You do not have permission to access this page"
+      end
     end
 end

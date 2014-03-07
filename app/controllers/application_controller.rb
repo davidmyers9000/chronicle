@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  helper_method :is_admin?
   before_filter :authorize_user!
 
   private
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
   	    redirect_to signin_path, notice: "You must sign in to view this page."
   	  end
   	end
+
+    def is_admin?
+      current_user.role == 'admin'
+    end
 end
 
