@@ -5,16 +5,18 @@ table
     th Email
     th Role
     th
-    th
-    th
+    - if is_admin?
+      th
+      th
 
   - @users.each do |user|
     tr
-      td = user.email
+      td = link_to user.email, user
       td = user.role
       td = link_to 'Show', user
-      td = link_to 'Edit', edit_user_path(user)
-      td = link_to 'Destroy', user, data: {:confirm => 'Are you sure?'}, :method => :delete
+      - if is_admin?
+        td = link_to 'Edit', edit_user_path(user)
+        td = link_to 'Destroy', user, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 

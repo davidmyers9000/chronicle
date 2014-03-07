@@ -1,15 +1,13 @@
 p#notice = notice
 
-p
-  strong Email:
+h2
   = @user.email
 p
-  strong Password:
-  = @user.password_digest
-p
   strong Role:
-  = @user.role
+  '  
+  span.label = @user.role
 
-= link_to 'Edit', edit_user_path(@user)
-'|
-= link_to 'Back', users_path
+- if is_admin?
+	= link_to 'Edit', edit_user_path(@user)
+	'|
+	= link_to 'Back', users_path
