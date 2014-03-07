@@ -10,7 +10,7 @@
       ul.right
         - if current_user
           li
-            a Welcome, #{current_user.email}
+            = link_to "Welcome, #{current_user.email}", user_path(current_user)
           li= link_to "Sign out", signout_path, method: "delete"
         - else
           li= link_to "Sign in", signin_path
