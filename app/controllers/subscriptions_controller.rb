@@ -25,4 +25,3 @@ class SubscriptionsController < ApplicationController
     def set_subscription
       @subscription = Subscription.find_by(group_id: params[:group_id], user_id: params[:user_id])
     end
-end
