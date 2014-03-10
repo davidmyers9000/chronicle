@@ -5,7 +5,7 @@ Chronicle::Application.routes.draw do
 
   resources :groups do
     resources :videos, controller: "groups/videos"
-    # resources :subscriptions, controller: "subscriptions"
+    resources :user, only: [:new, :create, :destroy], controller: "subscriptions"
   end
 
   # authentication

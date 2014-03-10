@@ -1,15 +1,15 @@
-%h2= "Manage users for #{@group.title}"
+h2 = "Ban users from #{@group.title}"
 
 .row
-  .col-md-4
-    = form_tag course_users_path, method: :post do
+  .medium-4.columns
+    = form_tag group_user_index_path, method: :post do
 
       = hidden_field_tag "group[user_ids][]", nil
       - @users.each do |user|
         = label_tag dom_id(user) do
           = check_box_tag "group[user_ids][]", user.id, @group.user_ids.include?(user.id), id: dom_id(user)
           = user.email
-        %br
+        br
 
       .actions
         = submit_tag "Update users", class: "btn btn-primary"
