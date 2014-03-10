@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :authorize_admin!, only: [:edit, :update, :destroy]
+  before_action :authorize_user!, except: :index
   # GET /groups
   # GET /groups.json
   def index
@@ -75,6 +76,12 @@ class GroupsController < ApplicationController
     def authorize_admin!
       unless current_user.role == 'admin'
         redirect_to @group, notice: "You do not have permission for this action."
+      end
+    end
+
+    def authorize_user!
+      if @group.users.find_by(id: current_user.id)
+        redirect_to groups_path, notice: "You have been banned from this group."
       end
     end
 end

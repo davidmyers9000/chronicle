@@ -5,7 +5,7 @@ table {
 }
 
 #notice {
-  // @extend .alert-box;
+  @extend .alert-box;
 }
 
 #error_explanation {
