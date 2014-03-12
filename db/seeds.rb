@@ -40,3 +40,10 @@ Video.create!(  :group_id    => 1,
                 :description => 'Mark Ripitoe teaches proper OHP form to several athletes',
                 :user_id		 => 2
   )
+
+# -----------------------------------------------------------
+comments = Comment.create!(
+    :source   => 'http://www.youtube.com/watch?v=AOi5OF7gAiM', 
+    :text     => 'Check this out!', 
+    :user_id  => 1, 
+    :video_id => 1)

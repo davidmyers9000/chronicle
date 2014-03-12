@@ -9,14 +9,29 @@ h4
 		span = link_to @video.user.email, @video.user
 		'  
 		span = @video.created_at.strftime("on %m/%d/%y at %I:%M:%p")
-.panel
-  h2 = @video.title
-  p
-    = @video.description
-
-
-  - if is_owner? || is_admin?
-	  = link_to 'Edit', edit_video_path(@video)
-	  '|
-	  = link_to 'Back', group_path(@group)
+h3 = @video.title
 p
+  = @video.description
+- if is_video_owner? || is_admin?
+  = link_to 'Edit', edit_video_path(@video)
+  '|
+  = link_to 'Back', group_path(@group)
+
+hr
+.comments
+	- @video.comments.each do |comment|
+		h4
+			small
+				| Posted by 
+				span = link_to comment.user.email, comment.user
+				'  
+				span = comment.created_at.strftime("on %m/%d/%y at %I:%M:%p")
+		.clearfix
+			- if comment.source
+				.left = raw youtube_embed comment.source, 240, 180
+			p = comment.text
+
+		- if is_comment_owner?(comment)
+			= link_to "Edit", edit_comment_path
+		hr
+

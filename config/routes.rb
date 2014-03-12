@@ -1,6 +1,5 @@
 Chronicle::Application.routes.draw do
-
-  resources :sessions,     only: [:create]
+  resources :sessions,     only:   [:create]
   resources :users
 
   resources :groups do
@@ -8,6 +7,7 @@ Chronicle::Application.routes.draw do
     resources :user, only: [:new, :create, :destroy], controller: "subscriptions"
   end
 
+  resources :comments
   # authentication
   get    "signup"     => "users#new",        as: "signup"
   get    "signin"     => "sessions#new",     as: "signin"
