@@ -16,7 +16,7 @@ h4
 
 
   - if is_owner? || is_admin?
-	  = link_to 'Edit', edit_group_video_path(@group, @video)
+	  = link_to 'Edit', edit_video_path(@video)
 	  '|
-	  = link_to 'Back', group_path
+	  = link_to 'Back', group_path(@group)
 p

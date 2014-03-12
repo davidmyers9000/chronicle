@@ -4,7 +4,7 @@ Chronicle::Application.routes.draw do
   resources :users
 
   resources :groups do
-    resources :videos, controller: "groups/videos"
+    resources :videos, controller: "groups/videos", shallow: true
     resources :user, only: [:new, :create, :destroy], controller: "subscriptions"
   end
 

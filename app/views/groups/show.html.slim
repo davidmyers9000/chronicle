@@ -14,11 +14,11 @@
 - @group.videos.each do |video|
 	.row
 		.medium-12.columns
-			h3 = link_to video.title, group_video_path(@group, video)
+			h3 = link_to video.title, video_path(video)
 	.row
 		.medium-9.columns = video.description
 		.medium-3.columns
 			- if (current_user.id == video.user_id || current_user.role == 'admin')
-				= link_to "Edit", edit_group_video_path(@group, video)
+				= link_to "Edit", edit_video_path(video)
 				'  | 
-				= link_to "Remove", group_video_path(@group, video), data: {:confirm => 'Are you sure?'}, :method => :delete
+				= link_to "Remove", video_path(video), data: {:confirm => 'Are you sure?'}, :method => :delete
