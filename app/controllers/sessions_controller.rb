@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :authorize_user!
+  skip_before_filter :authorize_login!
 
   def new
     redirect_to signup_path if current_user

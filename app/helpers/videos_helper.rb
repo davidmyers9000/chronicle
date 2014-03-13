@@ -1,5 +1,5 @@
 module VideosHelper
-  def youtube_embed(youtube_url)
+  def youtube_embed(youtube_url, width=640, height=480)
     if youtube_url[/youtu\.be\/([^\?]*)/]
       youtube_id = $1
     else
@@ -8,11 +8,15 @@ module VideosHelper
       youtube_id = $5
     end
 
-    %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
+    %Q{<iframe title="YouTube video player" width="#{width}" height="#{height}" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
 
-  def is_owner?
+  def is_video_owner?
     current_user.id == @video.user_id
+  end
+
+  def is_comment_owner?(comment)
+    current_user.id == comment.user_id
   end
 end
 

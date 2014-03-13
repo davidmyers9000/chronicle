@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 
   has_many :videos
+  has_many :comments
   has_many :subscriptions
   has_many :groups, through: :subscriptions
 

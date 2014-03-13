@@ -1,13 +1,16 @@
 Chronicle::Application.routes.draw do
-
-  resources :sessions,     only: [:create]
+  resources :sessions,     only:   [:create]
   resources :users
 
+
   resources :groups do
-    resources :videos, controller: "groups/videos"
+    resources :videos, controller: "groups/videos", shallow: true
     resources :user, only: [:new, :create, :destroy], controller: "subscriptions"
   end
 
+  resources :videos, except: [:index, :create, :new] do
+    resources :comments
+  end
   # authentication
   get    "signup"     => "users#new",        as: "signup"
   get    "signin"     => "sessions#new",     as: "signin"

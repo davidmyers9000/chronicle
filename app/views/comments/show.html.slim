@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Source:
+  = @comment.source
+p
+  strong Text:
+  = @comment.text
+
+= link_to 'Edit', edit_video_comment_path(@video, @comment)
+'|
+= link_to 'Back', video_comments_path(@video)

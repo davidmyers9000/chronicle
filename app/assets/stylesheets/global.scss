@@ -12,3 +12,7 @@ table {
   @extend .alert-box;
   @extend .info;
 }
+
+.comment {
+	@extend .panel; 
+}

@@ -1,5 +1,5 @@
 class Groups::VideosController < ApplicationController
-  before_action :set_group
+  before_action :set_group, only: [:index, :new, :create]
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   before_action :authorize_author!, only: [:edit, :update, :destroy]
@@ -73,7 +73,8 @@ class Groups::VideosController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = @group.videos.find(params[:id])
+      @video = Video.find(params[:id])
+      @group = @video.group
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
