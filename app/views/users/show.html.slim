@@ -1,4 +1,5 @@
-p#notice = notice
+- if flash[:notice]
+	p#notice = notice
 
 h1
   = @user.email
@@ -25,10 +26,26 @@ table.table
 	tbody
 		- @user.videos.each do |video|
 			tr
-				td = link_to video.title, group_video_path(video.group, video)
+				td = link_to video.title, video_path(video)
 				td = link_to video.group.title, group_path(video.group)
 				- if ( current_user.id == video.user_id || current_user.role == "admin" )
-					td = link_to "Edit", edit_group_video_path(video.group, video)
-					td = link_to "Destroy", group_video_path(video.group, video), data: {:confirm => 'Are you sure?'}, :method => :delete
+					td = link_to "Edit", edit_video_path(video)
+					td = link_to "Destroy", video_path(video), data: {:confirm => 'Are you sure?'}, :method => :delete
 
+
+h2 Comments
+table.table
+	th Group
+	th Video
+	th Text
+	th
+	tbody
+		- @user.comments.each do |comment|
+			tr
+				td = link_to comment.video.group.title, group_path(comment.video.group)
+				td = link_to comment.video.title, video_path(comment.video)
+				td = comment.text
+				- if ( current_user.id == comment.user_id || current_user.role == "admin" )
+					td = link_to "Edit", edit_video_comment_path(comment.video, comment)
+					td = link_to "Destroy", video_comment_path(comment.video, comment), data: {:confirm => 'Are you sure?'}, :method => :delete
 

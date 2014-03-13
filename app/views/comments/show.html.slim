@@ -7,6 +7,6 @@ p
   strong Text:
   = @comment.text
 
-= link_to 'Edit', edit_comment_path(@comment)
+= link_to 'Edit', edit_video_comment_path(@video, @comment)
 '|
-= link_to 'Back', comments_path
+= link_to 'Back', video_comments_path(@video)
