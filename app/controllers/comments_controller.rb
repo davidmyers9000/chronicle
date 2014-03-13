@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, only: [:index, :new, :create]
 
   # GET /comments
   # GET /comments.json
@@ -14,7 +15,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @comment = @video.comments.new
   end
 
   # GET /comments/1/edit
@@ -24,7 +25,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = @video.comments.new(comment_params)
+    @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
@@ -67,8 +69,12 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
     end
 
+    def set_video
+      @video = Video.find(params[:id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:source, :text)
+      params.require(@video, :comment).permit(:source, :text, :user_id, :video_id)
     end
 end

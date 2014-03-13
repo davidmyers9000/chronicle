@@ -13,9 +13,12 @@ h3 = @video.title
 p
   = @video.description
 - if is_video_owner? || is_admin?
-  = link_to 'Edit', edit_video_path(@video)
-  '|
-  = link_to 'Back', group_path(@group)
+  p
+	  = link_to 'Edit', edit_video_path(@video)
+	  '|
+	  = link_to 'Back', group_path(@group)
+
+p = link_to "Comment", new_video_comment_path(@video), class: "button radius"
 
 hr
 .comments
@@ -32,6 +35,6 @@ hr
 			p = comment.text
 
 		- if is_comment_owner?(comment)
-			= link_to "Edit", edit_comment_path
+			= link_to "Edit", edit_video_comment_path(@video,comment)
 		hr
 
